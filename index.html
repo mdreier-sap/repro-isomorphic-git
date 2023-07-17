@@ -1,23 +1,25 @@
 <html>
     <head>
         <script src="dist/index.js"></script>
+        <script
+            id="sap-ui-bootstrap"
+            src="https://ui5.sap.com/1.108.15/resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_belize"
+            data-sap-ui-compatVersion="edge"
+            data-sap-ui-resourceroots='{"demo": "."}'
+            data-sap-ui-async="true"
+			data-sap-ui-preload="async"
+            data-sap-ui-frameOptions="trusted"
+        ></script>
+        <script>
+            sap.ui.getCore().attachInit(() => {
+                sap.ui.require(["demo/test"], test => {
+                    Promise.all([test.init()]);
+                });
+            });
+        </script>
     </head>
     <body>
         <h1>Testing isomorphic-git</h1>
-        <script>
-            const fs = new window.dependencies.LightningFS("TEST", {wipe: true});
-            const git = window.dependencies.git;
-            const dir = "/demo/mockusera@example.com/repoA";
-
-            git.init({
-                fs,
-                dir,
-                defaultBranch: "main"
-            })
-            .then(() => git.setConfig({fs, dir, path: "user.name", value: "mockusera"}))
-            .then(() => git.setConfig({fs, dir, path: "user.email", value: "unittest-setup@example.com"}))
-            .then(() => alert("Test successful"))
-            .catch(e => {console.log(e); alert("Test failed");});
-        </script>
     </body>
 </html>

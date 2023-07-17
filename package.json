@@ -16,6 +16,8 @@
   "dependencies": {
     "@isomorphic-git/lightning-fs": "^4.6.0",
     "buffer": "^6.0.3",
-    "isomorphic-git": "^1.24.3"
+    "isomorphic-git": "^1.24.3",
+    "markdown-it": "^13.0.1",
+    "octokit": "^3.0.0"
   }
 }
