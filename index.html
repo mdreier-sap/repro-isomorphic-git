@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script src="dist/index.js"></script>
+    </head>
+    <body>
+        <h1>Testing isomorphic-git</h1>
+        <script>
+            const fs = new window.dependencies.LightningFS("TEST", {wipe: true});
+            const git = window.dependencies.git;
+            const dir = "/demo/mockusera@example.com/repoA";
+
+            git.init({
+                fs,
+                dir,
+                defaultBranch: "main"
+            })
+            .then(() => git.setConfig({fs, dir, path: "user.name", value: "mockusera"}))
+            .then(() => git.setConfig({fs, dir, path: "user.email", value: "unittest-setup@example.com"}))
+            .then(() => alert("Test successful"))
+            .catch(e => {console.log(e); alert("Test failed");});
+        </script>
+    </body>
+</html>
